@@ -1,0 +1,232 @@
+# Mini Shell (Assignment 1)
+
+Mini shell project as a coursework of the OS subject.
+
+by Luzia Manuel.
+
+## Compile
+
+To compile run -> `make all`
+To compile only shell1 run -> `make shell1`
+To Compile only shell2 run -> `make shell2`
+
+## Run
+
+Shell1 -> `./build/shell1`
+Shell2 -> `./build/shell2`
+
+## How it works
+**Note**: ``Need to leave space after typing the command``
+
+For externals commands like: ‘ls’, ‘cat’, ‘date’, ‘rm’ and ‘mkdir’, you can use any option, if the option is not found it will be handled by the shell itself.
+
+
+##  some tests to test the functioning of the shell
+
+luzybaby@LAPTOP-BUHJMS9V:~/home/OS/assignment1$ ls
+assignment1
+luzybaby@LAPTOP-BUHJMS9V:~/home/OS/assignment1$ cd assignment1
+luzybaby@LAPTOP-BUHJMS9V:~/home/OS/assignment1/assignment1$ ls
+Makefile  build  header.h  parta.c  partb.c  readme
+luzybaby@LAPTOP-BUHJMS9V:~/home/OS/assignment1/assignment1$ /build/shell2
+bash: /build/shell2: No such file or directory
+luzybaby@LAPTOP-BUHJMS9V:~/home/OS/assignment1/assignment1$ ./build/shell1
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 -> ls -a -l
+.  ..  Makefile  build  header.h  parta.c  partb.c  readme
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 -> ls
+Command not found
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 -> ls 
+Makefile  build  header.h  parta.c  partb.c  readme
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 -> cd build 
+❤️  /home/luzybaby/home/OS/assignment1/assignment1/build -> ls 
+shell1  shell2
+❤️  /home/luzybaby/home/OS/assignment1/assignment1/build -> pwd 
+/home/luzybaby/home/OS/assignment1/assignment1/build
+❤️  /home/luzybaby/home/OS/assignment1/assignment1/build -> ls
+Command not found
+❤️  /home/luzybaby/home/OS/assignment1/assignment1/build -> ls 
+shell1  shell2
+❤️  /home/luzybaby/home/OS/assignment1/assignment1/build -> cd shell1 
+chdir: Not a directory
+❤️  /home/luzybaby/home/OS/assignment1/assignment1/build -> cd shell2 
+chdir: Not a directory
+❤️  /home/luzybaby/home/OS/assignment1/assignment1/build -> cd shell2
+few arguments passed to cd: it requires 1
+❤️  /home/luzybaby/home/OS/assignment1/assignment1/build -> cd.. 
+Command not found
+❤️  /home/luzybaby/home/OS/assignment1/assignment1/build -> cd ..
+few arguments passed to cd: it requires 1
+❤️  /home/luzybaby/home/OS/assignment1/assignment1/build -> cd .. 
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 -> echo 
+few arguments passed to cd: it requires 1
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 -> echo  
+few arguments passed to cd: it requires 1
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 -> echo 
+few arguments passed to cd: it requires 1
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 ->  echo 
+few arguments passed to cd: it requires 1
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 -> ls 
+Makefile  build  header.h  parta.c  partb.c  readme
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 -> cd build 
+❤️  /home/luzybaby/home/OS/assignment1/assignment1/build -> echo 
+few arguments passed to cd: it requires 1
+❤️  /home/luzybaby/home/OS/assignment1/assignment1/build ->  echo 
+few arguments passed to cd: it requires 1
+❤️  /home/luzybaby/home/OS/assignment1/assignment1/build -> pwd 
+/home/luzybaby/home/OS/assignment1/assignment1/build
+❤️  /home/luzybaby/home/OS/assignment1/assignment1/build -> cd .. 
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 -> cd ..
+few arguments passed to cd: it requires 1
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 -> cd .. 
+❤️  /home/luzybaby/home/OS/assignment1 -> cd
+Command not found
+❤️  /home/luzybaby/home/OS/assignment1 -> cd .. 
+❤️  /home/luzybaby/home/OS -> cd .. 
+❤️  /home/luzybaby/home -> cd .. 
+❤️  /home/luzybaby -> ls 
+CO  home  shell
+❤️  /home/luzybaby -> cd shell 
+❤️  /home/luzybaby/shell -> ls 
+a.out  main.c
+❤️  /home/luzybaby/shell -> cd a.out 
+chdir: Not a directory
+❤️  /home/luzybaby/shell -> ls 
+a.out  main.c
+❤️  /home/luzybaby/shell -> main.c 
+Command not found
+❤️  /home/luzybaby/shell -> cd ..
+few arguments passed to cd: it requires 1
+❤️  /home/luzybaby/shell -> cd ..
+few arguments passed to cd: it requires 1
+❤️  /home/luzybaby/shell -> cd .. 
+❤️  /home/luzybaby -> ls 
+CO  home  shell
+❤️  /home/luzybaby -> cd home 
+❤️  /home/luzybaby/home -> ls 
+DSA  OS
+❤️  /home/luzybaby/home -> mkdir ol 
+❤️  /home/luzybaby/home -> ls 
+DSA  OS  ol
+❤️  /home/luzybaby/home -> cd ol 
+❤️  /home/luzybaby/home/ol -> ls 
+❤️  /home/luzybaby/home/ol -> date 
+Mon Oct 31 22:01:15 IST 2022
+❤️  /home/luzybaby/home/ol -> ls 
+❤️  /home/luzybaby/home/ol -> rm ol -r
+rm: cannot remove 'ol': No such file or directory
+❤️  /home/luzybaby/home/ol -> cd .. 
+❤️  /home/luzybaby/home -> ls 
+DSA  OS  ol
+❤️  /home/luzybaby/home -> rm ol -r 
+❤️  /home/luzybaby/home -> ls 
+DSA  OS
+❤️  /home/luzybaby/home -> cd OS 
+❤️  /home/luzybaby/home/OS -> ls 
+README.me  assignment1
+❤️  /home/luzybaby/home/OS -> cd assignment1 
+❤️  /home/luzybaby/home/OS/assignment1 -> ls 
+assignment1
+❤️  /home/luzybaby/home/OS/assignment1 -> cd assignment1 
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 -> ls 
+Makefile  build  header.h  parta.c  partb.c  readme
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 -> cat parta.c 
+#include "header.h"
+
+int is_in(char *command,int size, char commands[][9]){ 
+   int found = 0;
+   
+   for (int i = 0; i < size; i++){
+      int result = strcmp(command, commands[i]);
+      if (result == 0) {
+         found = 1;
+      }
+   }
+
+   return found;
+}
+
+void handle_internal_commands(char *command, int argc, void* args)  
+{
+  
+   if (strcmp(command, "cd") == 0){
+      call_cd(argc, args);
+   } else if (strcmp(command, "echo") == 0) {
+     call_echo(argc, args);
+   } else if (strcmp(command, "pwd") == 0) {
+     call_pwd();
+   }
+}
+
+void handle_external_commands(char *command, int argc, char *args[MAX_COMMANDS]) 
+{
+   pid_t pid;
+   int status = 0;
+   if ((pid = fork()) == 0){
+      char file_path[FILE_PATH_LENGTH];
+      char *env[] = { NULL };
+      snprintf(file_path, FILE_PATH_LENGTH, "%s/%s", PATH, args[0]);
+      char *arguments[MAX_ARG];
+
+      args[argc] = NULL;
+     
+      if (execvp(file_path, args) < 0){
+         perror("execvp");
+      }
+   } 
+      
+   wait(&status);
+}
+
+
+int main(int argc , char *argv) { 
+   char internals[][9] = {"cd", "echo", "pwd"};
+   char externals[][9] = {"ls","cat","date","rm","mkdir"};
+   char user_input[FILE_PATH_LENGTH];
+   char *commands[MAX_COMMANDS]; //user command[cd, ls, mkdir and etc..]
+
+   for(;;){
+      if (getcwd(current_directory, DIR_LENGTH) < 0){
+         perror("current directory");
+         exit(EXIT_FAILURE);
+      } //get current directory
+
+      printf("❤️  %s -> ", current_directory);
+      if (!fgets(user_input, FILE_PATH_LENGTH, stdin) < 0){
+         perror("user input");
+      }
+     
+      char *token;
+      int argument_count = 0;
+      token = strtok(user_input, " ");
+
+      while (token != NULL){
+         commands[argument_count]  = token;
+         token = strtok(NULL, " ");
+         argument_count++; //update argument count
+      }
+  
+      if (is_in(commands[0], INTERNAL_SIZE, internals) == 1){
+         handle_internal_commands(commands[0], argument_count, (void*)commands);
+      } else if (is_in(commands[0], EXTERNAL_SIZE, externals) == 1) {
+         handle_external_commands(commands[0], argument_count-1, (void*)commands);
+      } else if (strcmp(commands[0], "q") == 0){
+         printf("<quitting the shell..>\n");
+         exit(EXIT_SUCCESS); 
+      }  else {
+         printf("Command not found\n"); 
+      }
+   }
+  
+   return 0;
+}
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 ->  ls 
+Makefile  build  header.h  parta.c  partb.c  readme
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 -> date 
+Mon Oct 31 22:04:45 IST 2022
+❤️  /home/luzybaby/home/OS/assignment1/assignment1 -> cd .. 
+❤️  /home/luzybaby/home/OS/assignment1 -> cd ..
+few arguments passed to cd: it requires 1
+❤️  /home/luzybaby/home/OS/assignment1 -> cd .. 
+❤️  /home/luzybaby/home/OS -> 
+
+

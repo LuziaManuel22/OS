@@ -1,0 +1,42 @@
+diff --git a/linux-5.19.9/arch/x86/entry/syscalls/syscall_64.tbl b/linux-5.19.9/arch/x86/entry/syscalls/syscall_64.tbl
+index c8d126..6f6f7bb 100644
+--- a/linux-5.19.9/arch/x86/entry/syscalls/syscall_64.tbl
++++ b/linux-5.19.9/arch/x86/entry/syscalls/syscall_64.tbl
+@@ -415,5 +415,6 @@
+ 545	x32	execveat		compat_sys_execveat
+ 546	x32	preadv2			compat_sys_preadv64v2
+ 547	x32	pwritev2		compat_sys_pwritev64v2
++548	x32	kernel_2d_memcpy sys_kernel_2d_memcpy
+-# This is the end of the legacy x32 range.  Numbers 548 and above are
++#This is the end of the legacy x32 range.  Numbers 548 and above are
+ # not special and are not to be used for x32-specific syscalls.
+diff --git a/linux-5.19.9/kernel/sys.c b/linux-5.19.9/kernel/sys.c
+index b911fa6..8efalla 100644
+--- a/linux-5.19.9/kernel/sys.c
++++ b/linux-5.19.9/kernel/sys.c
+@@ -270,6 +270,27 @@ COMPAT_SYSCALL_DEFINE3(setpriority, int, which, int, who, int, niceval)
+ out:
+		return error;
+ }
++SYSCALL_DEFINE3(kernel_2d_memcpy , double , s , double*, src, double *, dst)
++{
++	double *aux = (double *) kcalloc(s, sizeof(double), GFP_KERNEL);
++	int l = sizeof(double) * s; 
++	int from, to;
++
++   from = __copy_from_user(aux, src, l);
++
++	if (from != 0) {
++			return -EFAULT;
++	}
++
++	to = __copy_to_user(dst, aux, l);
++
++	if (to != 0) {
++			return -EFAULT;
++	}
++		
++		return 0;
++}
++
+ 
